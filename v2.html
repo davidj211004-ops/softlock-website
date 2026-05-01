@@ -719,15 +719,15 @@
 
     .dark-features-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
     }
 
     .dark-feature-card {
       background: #1a1a1a;
       border: 1px solid #2a2a2a;
-      border-radius: 12px;
-      padding: 28px;
+      border-radius: 16px;
+      padding: 32px 28px;
       transition: border-color 0.2s;
     }
 
@@ -735,26 +735,18 @@
       border-color: #3a3a3a;
     }
 
-    .dark-card-num {
-      font-size: 11px;
-      font-weight: 600;
-      color: #444444;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 12px;
-    }
-
     .dark-card-title {
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 600;
       color: #ffffff;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
+      line-height: 1.3;
     }
 
     .dark-card-body {
       font-size: 14px;
       color: #777777;
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
     /* ── WHY SOFTLOCK ── */
@@ -1072,7 +1064,7 @@
       }
 
       .dark-features-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
       }
 
       .process-steps {
@@ -1142,6 +1134,10 @@
 
       .dark-features {
         padding: 72px 24px;
+      }
+
+      .dark-features-grid {
+        grid-template-columns: 1fr;
       }
 
       .dark-features-h2 {
@@ -1446,77 +1442,28 @@
     </section>
 
     <!-- DARK FEATURE SECTION -->
-    <section class="dark-features">
+    <section class="dark-features" id="why">
       <div class="dark-features-inner">
         <div class="dark-features-header reveal">
-          <h2 class="dark-features-h2">We build what we believe in.</h2>
-          <p class="dark-features-sub">The systems we offer are ones we&rsquo;ve used, refined, and seen work &mdash; not ideas we&rsquo;re pitching for the first time.</p>
+          <h2 class="dark-features-h2">We&rsquo;ve lived the problem. We build the solution.</h2>
         </div>
 
         <div class="dark-features-grid">
           <div class="dark-feature-card reveal">
-            <div class="dark-card-num">01</div>
-            <div class="dark-card-title">Our Cold Email System</div>
-            <div class="dark-card-body">Cold outreach that&rsquo;s personalised at scale &mdash; the kind of system we&rsquo;ve used to generate consistent inbound without a sales team.</div>
+            <div class="dark-card-title">AI-native since 2022</div>
+            <div class="dark-card-body">We&rsquo;ve been building with AI since before it went mainstream &mdash; years of hands-on experimentation that sits behind every system we deliver.</div>
           </div>
           <div class="dark-feature-card reveal reveal-delay-1">
-            <div class="dark-card-num">02</div>
-            <div class="dark-card-title">Our Hiring Funnel</div>
-            <div class="dark-card-body">Recruiting without the overhead. An automated pipeline that filters, scores, and surfaces the right candidates &mdash; fast.</div>
+            <div class="dark-card-title">Fixed price, no surprises</div>
+            <div class="dark-card-body">Every project gets a clear scope, timeline, and fixed price. No hourly billing, no scope creep, no mystery invoices.</div>
           </div>
           <div class="dark-feature-card reveal reveal-delay-2">
-            <div class="dark-card-num">03</div>
-            <div class="dark-card-title">Our AI Nurture System</div>
-            <div class="dark-card-body">Leads that don&rsquo;t convert immediately aren&rsquo;t lost &mdash; they&rsquo;re nurtured automatically until the timing is right.</div>
+            <div class="dark-card-title">The tools change. We keep up.</div>
+            <div class="dark-card-body">Every solution we deliver is built on cutting-edge tools &mdash; not what worked two years ago.</div>
           </div>
           <div class="dark-feature-card reveal reveal-delay-3">
-            <div class="dark-card-num">04</div>
-            <div class="dark-card-title">Our Content Engine</div>
-            <div class="dark-card-body">Consistent publishing without a content team. One input gets repurposed across every channel &mdash; automatically.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHY SOFTLOCK -->
-    <section class="why" id="why">
-      <div class="why-inner">
-        <div class="why-left reveal">
-          <h2 class="why-h2">We understand the problems because we&rsquo;ve lived them.</h2>
-          <p class="why-text">Softlock was built by people who run a business, not just people who build software. We know what it&rsquo;s like to juggle hiring, outreach, client delivery, and growth all at once &mdash; and we build systems that actually address that reality.</p>
-        </div>
-
-        <div class="why-right">
-          <div class="feature-row reveal">
-            <div class="feature-check">&#10003;</div>
-            <div class="feature-text">
-              <div class="feature-title">Custom-Built, Not Templated</div>
-              <div class="feature-desc">No recycled stacks, no cookie-cutter solutions.</div>
-            </div>
-          </div>
-
-          <div class="feature-row reveal reveal-delay-1">
-            <div class="feature-check">&#10003;</div>
-            <div class="feature-text">
-              <div class="feature-title">Delivered in Weeks, Not Months</div>
-              <div class="feature-desc">Fast execution without cutting corners.</div>
-            </div>
-          </div>
-
-          <div class="feature-row reveal reveal-delay-2">
-            <div class="feature-check">&#10003;</div>
-            <div class="feature-text">
-              <div class="feature-title">AI-First Architecture</div>
-              <div class="feature-desc">Built on AI from the ground up, not bolted on.</div>
-            </div>
-          </div>
-
-          <div class="feature-row reveal reveal-delay-3">
-            <div class="feature-check">&#10003;</div>
-            <div class="feature-text">
-              <div class="feature-title">Full Code Ownership</div>
-              <div class="feature-desc">Everything handed over. No lock-in, ever.</div>
-            </div>
+            <div class="dark-card-title">We use our own systems</div>
+            <div class="dark-card-body">The automations we build for clients are the same ones running our agency. Our systems work because we depend on them too.</div>
           </div>
         </div>
       </div>
