@@ -526,9 +526,9 @@
 
     /* ── STATS BAR ── */
     .stats-bar {
-      background: #fafafa;
-      border-top: 1px solid #eeeeee;
-      border-bottom: 1px solid #eeeeee;
+      background: #faf6f0;
+      border-top: 1px solid #f0e8dc;
+      border-bottom: 1px solid #f0e8dc;
       padding: 36px 24px;
     }
 
@@ -550,7 +550,7 @@
     }
 
     .stat-item + .stat-item {
-      border-left: 1px solid #eeeeee;
+      border-left: 1px solid #f0e8dc;
     }
 
     .stat-number {
@@ -638,14 +638,18 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
-      transition: box-shadow 0.25s, border-color 0.25s, transform 0.2s;
       cursor: default;
     }
 
-    .service-card:hover {
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    .services .service-card {
+      transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+      transition-delay: 0s;
+    }
+
+    .services .service-card:hover {
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.09);
       border-color: #cccccc;
-      transform: translateY(-2px);
+      transform: translateY(-5px);
     }
 
     .service-icon {
@@ -671,19 +675,6 @@
       color: #666666;
       line-height: 1.6;
       flex: 1;
-    }
-
-    .service-link {
-      font-size: 13px;
-      font-weight: 600;
-      color: #111111;
-      text-decoration: none;
-      transition: text-decoration 0.2s;
-      margin-top: 4px;
-    }
-
-    .service-link:hover {
-      text-decoration: underline;
     }
 
     /* ── DARK FEATURE SECTION ── */
@@ -1345,19 +1336,16 @@
                 <div class="service-icon">&#127760;</div>
                 <div class="service-name">Landing Pages</div>
                 <div class="service-desc">High-converting landing pages engineered for your offer &mdash; optimised for paid and organic traffic from launch.</div>
-                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
               </div>
               <div class="service-card reveal reveal-delay-1">
                 <div class="service-icon">&#9993;</div>
                 <div class="service-name">Cold Email Systems</div>
                 <div class="service-desc">Automated outbound sequences that personalise at scale &mdash; without ending up in spam.</div>
-                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
               </div>
               <div class="service-card reveal reveal-delay-2">
                 <div class="service-icon">&#128214;</div>
                 <div class="service-name">Content Systems</div>
                 <div class="service-desc">AI-assisted content pipelines that keep your brand publishing consistently across every channel.</div>
-                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
               </div>
             </div>
           </div>
@@ -1370,13 +1358,11 @@
                 <div class="service-icon">&#128101;</div>
                 <div class="service-name">Hiring Funnels</div>
                 <div class="service-desc">End-to-end automated hiring pipelines that attract, qualify, and route the right candidates to your team.</div>
-                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
               </div>
               <div class="service-card reveal reveal-delay-1">
                 <div class="service-icon">&#128196;</div>
                 <div class="service-name">Resume Screening</div>
                 <div class="service-desc">AI-powered screening that cuts through the noise and surfaces your best applicants in minutes, not days.</div>
-                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
               </div>
             </div>
           </div>
@@ -1389,19 +1375,16 @@
                 <div class="service-icon">&#129309;</div>
                 <div class="service-name">AI Nurture Systems</div>
                 <div class="service-desc">Smart follow-up and re-engagement sequences that keep leads warm and clients loyal &mdash; on autopilot.</div>
-                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
               </div>
               <div class="service-card reveal reveal-delay-1">
                 <div class="service-icon">&#128640;</div>
                 <div class="service-name">AI Onboarding Systems</div>
                 <div class="service-desc">Automated onboarding flows that deliver a premium first impression and reduce time-to-value for every new client.</div>
-                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
               </div>
               <div class="service-card reveal reveal-delay-2">
                 <div class="service-icon">&#128201;</div>
                 <div class="service-name">Data Infrastructure</div>
                 <div class="service-desc">Clean, connected data pipelines that give your business a single source of truth &mdash; so every system runs on accurate, real-time information.</div>
-                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
               </div>
             </div>
           </div>
@@ -1414,25 +1397,21 @@
                 <div class="service-icon">&#128187;</div>
                 <div class="service-name">Custom Web Apps</div>
                 <div class="service-desc">Purpose-built web applications designed around your exact workflows &mdash; not off-the-shelf compromises.</div>
-                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
               </div>
               <div class="service-card reveal reveal-delay-1">
                 <div class="service-icon">&#128200;</div>
                 <div class="service-name">Customised CRMs</div>
                 <div class="service-desc">CRM setups and custom builds that match your sales process &mdash; with automations that actually get used.</div>
-                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
               </div>
               <div class="service-card reveal reveal-delay-2">
                 <div class="service-icon">&#128466;</div>
                 <div class="service-name">Document Processing</div>
                 <div class="service-desc">Automated document intake, extraction, and routing &mdash; turning manual admin into zero-touch workflows.</div>
-                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
               </div>
               <div class="service-card reveal reveal-delay-3">
                 <div class="service-icon">&#127908;</div>
                 <div class="service-name">AI Voice Systems</div>
                 <div class="service-desc">Intelligent voice agents that handle inbound calls, qualify leads, and book appointments &mdash; without a human on the line.</div>
-                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
               </div>
             </div>
           </div>
