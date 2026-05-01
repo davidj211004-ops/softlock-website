@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SoftLock — AI Growth Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #ffffff;
+      color: #333333;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #ffffff;
+      border-bottom: 1px solid #e5e5e5;
+      transition: box-shadow 0.3s ease, border-bottom-color 0.3s ease;
+    }
+
+    .nav.scrolled {
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+      border-bottom-color: transparent;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      text-decoration: none;
+    }
+
+    .logo-text {
+      font-size: 22px;
+      font-weight: 700;
+      color: #111111;
+      letter-spacing: -0.025em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: #555555;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #111111;
+      text-decoration: underline;
+    }
+
+    .btn-nav {
+      display: inline-flex;
+      align-items: center;
+      background: #111111;
+      color: #ffffff !important;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 22px;
+      border-radius: 9999px;
+      text-decoration: none !important;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn-nav:hover {
+      background: #333333;
+      transform: translateY(-1px);
+      text-decoration: none !important;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #111111;
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile overlay nav */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: #111111;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-nav.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 36px;
+      margin-bottom: 48px;
+    }
+
+    .mobile-nav-links a {
+      font-size: 26px;
+      font-weight: 700;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: color 0.2s;
+    }
+
+    .mobile-nav-links a:hover {
+      color: #aaaaaa;
+    }
+
+    .btn-mobile-nav {
+      display: inline-flex;
+      align-items: center;
+      background: #ffffff;
+      color: #111111;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 14px 32px;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-mobile-nav:hover {
+      background: #eeeeee;
+    }
+
+    .mobile-nav-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 32px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 4px 8px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      background: #ffffff;
+      padding: 80px 24px;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .hero-eyebrow {
+      font-size: 12px;
+      font-weight: 500;
+      color: #888888;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    .hero-h1 {
+      font-size: 72px;
+      font-weight: 800;
+      color: #0a0a0a;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: #555555;
+      line-height: 1.75;
+      max-width: 520px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      background: #111111;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+      background: #333333;
+      transform: translateY(-2px);
+    }
+
+    .btn-text-link {
+      display: inline-flex;
+      align-items: center;
+      color: #555555;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .btn-text-link:hover {
+      color: #111111;
+      text-decoration: underline;
+    }
+
+    /* Browser mockup */
+    .browser-mockup {
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.10), 0 4px 16px rgba(0,0,0,0.06);
+      border: 1px solid #e5e5e5;
+    }
+
+    .browser-bar {
+      background: #111111;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .browser-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .browser-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dot-red { background: #ff5f56; }
+    .dot-yellow { background: #ffbd2e; }
+    .dot-green { background: #27c93f; }
+
+    .browser-url {
+      flex: 1;
+      background: rgba(255,255,255,0.08);
+      border-radius: 4px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+    }
+
+    .browser-url-text {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      font-family: 'Plus Jakarta Sans', monospace;
+      letter-spacing: 0.01em;
+    }
+
+    .browser-content {
+      background: #ffffff;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .mock-header {
+      background: #f7f7f7;
+      border-radius: 8px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid #eeeeee;
+    }
+
+    .mock-avatar {
+      width: 32px;
+      height: 32px;
+      background: #222222;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .mock-header-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mock-line {
+      height: 8px;
+      background: #e5e5e5;
+      border-radius: 4px;
+    }
+
+    .mock-line.w-full { width: 120px; }
+    .mock-line.w-half { width: 72px; }
+    .mock-line.w-sm { width: 48px; }
+
+    .mock-card-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .mock-card {
+      border-radius: 10px;
+      padding: 14px;
+      border: 1px solid #eeeeee;
+    }
+
+    .mock-card.dark { background: #111111; border-color: #222222; }
+    .mock-card.light { background: #f7f7f7; border-color: #e5e5e5; }
+
+    .mock-card-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .mock-card.dark .mock-card-icon {
+      background: #333333;
+    }
+
+    .mock-card.light .mock-card-icon {
+      background: #e5e5e5;
+    }
+
+    .mock-stat {
+      font-size: 18px;
+      font-weight: 800;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin-bottom: 2px;
+    }
+
+    .mock-card.dark .mock-stat { color: #ffffff; }
+    .mock-card.light .mock-stat { color: #111111; }
+
+    .mock-stat-label {
+      font-size: 10px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .mock-card.dark .mock-stat-label { color: #888888; }
+    .mock-card.light .mock-stat-label { color: #999999; }
+
+    .mock-chart {
+      background: #f7f7f7;
+      border-radius: 8px;
+      padding: 14px 16px;
+      border: 1px solid #eeeeee;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mock-chart-label {
+      font-size: 10px;
+      color: #999999;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .mock-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      height: 40px;
+    }
+
+    .mock-bar {
+      flex: 1;
+      border-radius: 3px 3px 0 0;
+    }
+
+    .mock-bar.h-20 { height: 20%; background: #e0e0e0; }
+    .mock-bar.h-40 { height: 40%; background: #cccccc; }
+    .mock-bar.h-55 { height: 55%; background: #aaaaaa; }
+    .mock-bar.h-70 { height: 70%; background: #888888; }
+    .mock-bar.h-85 { height: 85%; background: #555555; }
+    .mock-bar.h-100 { height: 100%; background: #111111; }
+
+    /* ── TICKER STRIP ── */
+    .ticker-strip {
+      background: #ffffff;
+      border-top: 1px solid #eeeeee;
+      border-bottom: 1px solid #eeeeee;
+      padding: 20px 0;
+      overflow: hidden;
+    }
+
+    .ticker-label {
+      font-size: 10px;
+      font-weight: 500;
+      color: #aaaaaa;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .ticker-outer {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .ticker-inner {
+      display: flex;
+      white-space: nowrap;
+      animation: ticker 30s linear infinite;
+    }
+
+    .ticker-inner:hover {
+      animation-play-state: paused;
+    }
+
+    .ticker-text {
+      font-size: 14px;
+      color: #999999;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+    }
+
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: #fafafa;
+      border-top: 1px solid #eeeeee;
+      border-bottom: 1px solid #eeeeee;
+      padding: 36px 24px;
+    }
+
+    .stats-bar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      text-align: center;
+      padding: 8px;
+    }
+
+    .stat-item + .stat-item {
+      border-left: 1px solid #eeeeee;
+    }
+
+    .stat-number {
+      font-size: 28px;
+      font-weight: 800;
+      color: #0a0a0a;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #888888;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── SECTION COMMON ── */
+    .section-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      color: #111111;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+    }
+
+    .section-h2 {
+      font-size: 44px;
+      font-weight: 700;
+      color: #0a0a0a;
+      letter-spacing: -0.018em;
+      line-height: 1.12;
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      background: #fafafa;
+      padding: 96px 24px;
+    }
+
+    .services-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .services-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .service-category {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .category-heading {
+      font-size: 11px;
+      font-weight: 600;
+      color: #999999;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    .category-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: #ffffff;
+      border: 1px solid #e8e8e8;
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: box-shadow 0.25s, border-color 0.25s, transform 0.2s;
+      cursor: default;
+    }
+
+    .service-card:hover {
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      border-color: #cccccc;
+      transform: translateY(-2px);
+    }
+
+    .service-icon {
+      width: 40px;
+      height: 40px;
+      background: #f0f0f0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .service-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #0a0a0a;
+    }
+
+    .service-desc {
+      font-size: 14px;
+      color: #666666;
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .service-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: #111111;
+      text-decoration: none;
+      transition: text-decoration 0.2s;
+      margin-top: 4px;
+    }
+
+    .service-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ── DARK FEATURE SECTION ── */
+    .dark-features {
+      background: #0f0f0f;
+      padding: 100px 24px;
+    }
+
+    .dark-features-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .dark-features-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .dark-features-h2 {
+      font-size: 52px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .dark-features-sub {
+      font-size: 18px;
+      color: #888888;
+      line-height: 1.7;
+    }
+
+    .dark-features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .dark-feature-card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 28px;
+      transition: border-color 0.2s;
+    }
+
+    .dark-feature-card:hover {
+      border-color: #3a3a3a;
+    }
+
+    .dark-card-num {
+      font-size: 11px;
+      font-weight: 600;
+      color: #444444;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+
+    .dark-card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .dark-card-body {
+      font-size: 14px;
+      color: #777777;
+      line-height: 1.7;
+    }
+
+    /* ── WHY SOFTLOCK ── */
+    .why {
+      background: #ffffff;
+      padding: 96px 24px;
+    }
+
+    .why-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .why-left {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .why-h2 {
+      font-size: 42px;
+      font-weight: 700;
+      color: #0a0a0a;
+      letter-spacing: -0.018em;
+      line-height: 1.12;
+    }
+
+    .why-text {
+      font-size: 17px;
+      color: #555555;
+      line-height: 1.75;
+    }
+
+    .why-right {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .feature-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .feature-check {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      background: #f0f0f0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #111111;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .feature-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .feature-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0a0a0a;
+    }
+
+    .feature-desc {
+      font-size: 14px;
+      color: #666666;
+      line-height: 1.6;
+    }
+
+    /* ── PROCESS ── */
+    .process {
+      background: #fafafa;
+      padding: 96px 24px;
+    }
+
+    .process-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .process-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .process-connector {
+      position: absolute;
+      top: 20px;
+      left: calc(12.5% + 20px);
+      right: calc(12.5% + 20px);
+      height: 1px;
+      background: #e5e5e5;
+      z-index: 0;
+    }
+
+    .process-step {
+      background: #ffffff;
+      border: 1px solid #e8e8e8;
+      border-radius: 14px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+      margin: 0 8px;
+      transition: box-shadow 0.25s, transform 0.2s;
+    }
+
+    .process-step:hover {
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background: #111111;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .step-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0a0a0a;
+    }
+
+    .step-desc {
+      font-size: 14px;
+      color: #666666;
+      line-height: 1.6;
+    }
+
+    /* ── FINAL CTA ── */
+    .final-cta {
+      background: #0a0a0a;
+      padding: 112px 24px;
+      text-align: center;
+    }
+
+    .final-cta-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .final-cta-h2 {
+      font-size: 52px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+    }
+
+    .final-cta-sub {
+      font-size: 18px;
+      color: #888888;
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .btn-cta-large {
+      display: inline-flex;
+      align-items: center;
+      background: #ffffff;
+      color: #111111;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: -0.01em;
+    }
+
+    .btn-cta-large:hover {
+      background: #eeeeee;
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #0a0a0a;
+      padding: 72px 24px 32px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-cols {
+      display: grid;
+      grid-template-columns: 2fr 1.5fr 1.5fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-logo-text {
+      font-size: 20px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .footer-tagline {
+      font-size: 14px;
+      color: #555555;
+      line-height: 1.6;
+      max-width: 260px;
+    }
+
+    .footer-col-heading {
+      font-size: 12px;
+      font-weight: 600;
+      color: #888888;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 18px;
+    }
+
+    .footer-col-subheading {
+      font-size: 11px;
+      font-weight: 600;
+      color: #444444;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-links li a {
+      font-size: 14px;
+      color: #888888;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links li a:hover {
+      color: #ffffff;
+    }
+
+    .footer-contact-item {
+      font-size: 14px;
+      color: #888888;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .footer-contact-link {
+      color: #aaaaaa;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .footer-contact-link:hover {
+      color: #ffffff;
+    }
+
+    .footer-bottom {
+      padding-top: 28px;
+      text-align: center;
+      font-size: 13px;
+      color: #444444;
+    }
+
+    /* ── REVEAL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero-h1 { font-size: 50px; }
+      .section-h2 { font-size: 36px; }
+      .dark-features-h2 { font-size: 40px; }
+      .why-h2 { font-size: 34px; }
+      .final-cta-h2 { font-size: 38px; }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 56px;
+      }
+
+      .why-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .dark-features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .process-connector {
+        display: none;
+      }
+
+      .process-step {
+        margin: 0;
+      }
+
+      .footer-cols {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .btn-nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .mobile-nav {
+        display: flex;
+      }
+
+      .hero {
+        padding: 64px 24px;
+        min-height: auto;
+      }
+
+      .hero-h1 {
+        font-size: 44px;
+      }
+
+      .hero-sub {
+        font-size: 16px;
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .stats-bar-inner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat-item:nth-child(odd) {
+        border-left: none;
+      }
+
+      .stat-item:nth-child(3),
+      .stat-item:nth-child(4) {
+        border-top: 1px solid #eeeeee;
+      }
+
+      .services {
+        padding: 64px 24px;
+      }
+
+      .dark-features {
+        padding: 72px 24px;
+      }
+
+      .dark-features-h2 {
+        font-size: 34px;
+      }
+
+      .dark-features-sub {
+        font-size: 16px;
+      }
+
+      .why {
+        padding: 64px 24px;
+      }
+
+      .process {
+        padding: 64px 24px;
+      }
+
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .final-cta {
+        padding: 72px 24px;
+      }
+
+      .final-cta-h2 {
+        font-size: 32px;
+      }
+
+      .final-cta-sub {
+        font-size: 16px;
+      }
+
+      .footer-cols {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .section-h2 {
+        font-size: 30px;
+      }
+
+      .why-h2 {
+        font-size: 28px;
+      }
+
+      .category-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-h1 { font-size: 34px; }
+      .hero-cta-row { flex-direction: column; align-items: flex-start; }
+      .btn-primary { width: 100%; justify-content: center; }
+      .stats-bar-inner { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav" id="mainNav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="logo-text">SoftLock</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="btn-nav">Book a Discovery Call &rarr;</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV OVERLAY -->
+  <nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close navigation">&#x2715;</button>
+    <ul class="mobile-nav-links">
+      <li><a href="#services" class="mobile-nav-link">Services</a></li>
+      <li><a href="#process" class="mobile-nav-link">Process</a></li>
+      <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+    </ul>
+    <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="btn-mobile-nav">Book a Discovery Call</a>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <span class="hero-eyebrow reveal">AI Growth Partner for B2B Founders</span>
+          <h1 class="hero-h1 reveal reveal-delay-1">The AI growth partner for fast-moving B2B companies.</h1>
+          <p class="hero-sub reveal reveal-delay-2">SoftLock designs and deploys custom AI infrastructure &mdash; from web apps and hiring funnels to CRMs and email systems &mdash; built for your business and ready to generate results from day one.</p>
+          <div class="hero-cta-row reveal reveal-delay-3">
+            <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="btn-primary">Book a Free Discovery Call &rarr;</a>
+            <a href="#services" class="btn-text-link">See what we build &darr;</a>
+          </div>
+        </div>
+
+        <div class="hero-right reveal reveal-delay-2">
+          <div class="browser-mockup">
+            <div class="browser-bar">
+              <div class="browser-dots">
+                <span class="browser-dot dot-red"></span>
+                <span class="browser-dot dot-yellow"></span>
+                <span class="browser-dot dot-green"></span>
+              </div>
+              <div class="browser-url">
+                <span class="browser-url-text">app.softlock.io/dashboard</span>
+              </div>
+            </div>
+            <div class="browser-content">
+              <div class="mock-header">
+                <div class="mock-avatar"></div>
+                <div class="mock-header-text">
+                  <div class="mock-line w-full"></div>
+                  <div class="mock-line w-half"></div>
+                </div>
+              </div>
+              <div class="mock-card-row">
+                <div class="mock-card dark">
+                  <div class="mock-card-icon"></div>
+                  <div class="mock-stat">94%</div>
+                  <div class="mock-stat-label">Retention Rate</div>
+                </div>
+                <div class="mock-card light">
+                  <div class="mock-card-icon"></div>
+                  <div class="mock-stat">10x</div>
+                  <div class="mock-stat-label">Avg. ROI</div>
+                </div>
+              </div>
+              <div class="mock-chart">
+                <div class="mock-chart-label">Pipeline Growth</div>
+                <div class="mock-bars">
+                  <div class="mock-bar h-20"></div>
+                  <div class="mock-bar h-40"></div>
+                  <div class="mock-bar h-55"></div>
+                  <div class="mock-bar h-70"></div>
+                  <div class="mock-bar h-85"></div>
+                  <div class="mock-bar h-100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TICKER STRIP -->
+    <div class="ticker-strip">
+      <div class="ticker-label">Systems Built On</div>
+      <div class="ticker-outer">
+        <div class="ticker-inner">
+          <span class="ticker-text">Make.com &nbsp;&middot;&nbsp; OpenAI &nbsp;&middot;&nbsp; HubSpot &nbsp;&middot;&nbsp; Zapier &nbsp;&middot;&nbsp; Anthropic &nbsp;&middot;&nbsp; Airtable &nbsp;&middot;&nbsp; Notion &nbsp;&middot;&nbsp; Instantly &nbsp;&middot;&nbsp; Apollo &nbsp;&middot;&nbsp; GoHighLevel &nbsp;&middot;&nbsp; n8n &nbsp;&middot;&nbsp; ClickUp &nbsp;&middot;&nbsp; Asana &nbsp;&middot;&nbsp; Monday &nbsp;&middot;&nbsp;</span>
+          <span class="ticker-text">Make.com &nbsp;&middot;&nbsp; OpenAI &nbsp;&middot;&nbsp; HubSpot &nbsp;&middot;&nbsp; Zapier &nbsp;&middot;&nbsp; Anthropic &nbsp;&middot;&nbsp; Airtable &nbsp;&middot;&nbsp; Notion &nbsp;&middot;&nbsp; Instantly &nbsp;&middot;&nbsp; Apollo &nbsp;&middot;&nbsp; GoHighLevel &nbsp;&middot;&nbsp; n8n &nbsp;&middot;&nbsp; ClickUp &nbsp;&middot;&nbsp; Asana &nbsp;&middot;&nbsp; Monday &nbsp;&middot;&nbsp;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+      <div class="stats-bar-inner">
+        <div class="stat-item reveal">
+          <span class="stat-number">50+</span>
+          <span class="stat-label">Projects Delivered</span>
+        </div>
+        <div class="stat-item reveal reveal-delay-1">
+          <span class="stat-number">94%</span>
+          <span class="stat-label">Client Retention</span>
+        </div>
+        <div class="stat-item reveal reveal-delay-2">
+          <span class="stat-number">&lt;&nbsp;14 Days</span>
+          <span class="stat-label">Build Time</span>
+        </div>
+        <div class="stat-item reveal reveal-delay-3">
+          <span class="stat-number">10x</span>
+          <span class="stat-label">ROI Average</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+      <div class="services-inner">
+        <div class="services-header">
+          <span class="section-badge reveal">Our Services</span>
+          <h2 class="section-h2 reveal reveal-delay-1">Everything You Need. Nothing You Don&rsquo;t.</h2>
+        </div>
+
+        <div class="services-grid">
+
+          <!-- Lead Generation -->
+          <div class="service-category reveal">
+            <h3 class="category-heading">Lead Generation</h3>
+            <div class="category-cards">
+              <div class="service-card reveal">
+                <div class="service-icon">&#127760;</div>
+                <div class="service-name">Landing Pages</div>
+                <div class="service-desc">High-converting landing pages engineered for your offer &mdash; optimised for paid and organic traffic from launch.</div>
+                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
+              </div>
+              <div class="service-card reveal reveal-delay-1">
+                <div class="service-icon">&#9993;</div>
+                <div class="service-name">Cold Email Systems</div>
+                <div class="service-desc">Automated outbound sequences that personalise at scale &mdash; without ending up in spam.</div>
+                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
+              </div>
+              <div class="service-card reveal reveal-delay-2">
+                <div class="service-icon">&#128214;</div>
+                <div class="service-name">Content Systems</div>
+                <div class="service-desc">AI-assisted content pipelines that keep your brand publishing consistently across every channel.</div>
+                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Talent Acquisition -->
+          <div class="service-category reveal">
+            <h3 class="category-heading">Talent Acquisition</h3>
+            <div class="category-cards">
+              <div class="service-card reveal">
+                <div class="service-icon">&#128101;</div>
+                <div class="service-name">Hiring Funnels</div>
+                <div class="service-desc">End-to-end automated hiring pipelines that attract, qualify, and route the right candidates to your team.</div>
+                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
+              </div>
+              <div class="service-card reveal reveal-delay-1">
+                <div class="service-icon">&#128196;</div>
+                <div class="service-name">Resume Screening</div>
+                <div class="service-desc">AI-powered screening that cuts through the noise and surfaces your best applicants in minutes, not days.</div>
+                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Client Success -->
+          <div class="service-category reveal">
+            <h3 class="category-heading">Client Success</h3>
+            <div class="category-cards">
+              <div class="service-card reveal">
+                <div class="service-icon">&#129309;</div>
+                <div class="service-name">AI Nurture Systems</div>
+                <div class="service-desc">Smart follow-up and re-engagement sequences that keep leads warm and clients loyal &mdash; on autopilot.</div>
+                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
+              </div>
+              <div class="service-card reveal reveal-delay-1">
+                <div class="service-icon">&#128640;</div>
+                <div class="service-name">AI Onboarding Systems</div>
+                <div class="service-desc">Automated onboarding flows that deliver a premium first impression and reduce time-to-value for every new client.</div>
+                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sales Administration -->
+          <div class="service-category reveal">
+            <h3 class="category-heading">Sales Administration</h3>
+            <div class="category-cards">
+              <div class="service-card reveal">
+                <div class="service-icon">&#128187;</div>
+                <div class="service-name">Custom Web Apps</div>
+                <div class="service-desc">Purpose-built web applications designed around your exact workflows &mdash; not off-the-shelf compromises.</div>
+                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
+              </div>
+              <div class="service-card reveal reveal-delay-1">
+                <div class="service-icon">&#128200;</div>
+                <div class="service-name">Customised CRMs</div>
+                <div class="service-desc">CRM setups and custom builds that match your sales process &mdash; with automations that actually get used.</div>
+                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
+              </div>
+              <div class="service-card reveal reveal-delay-2">
+                <div class="service-icon">&#128466;</div>
+                <div class="service-name">Document Processing</div>
+                <div class="service-desc">Automated document intake, extraction, and routing &mdash; turning manual admin into zero-touch workflows.</div>
+                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- DARK FEATURE SECTION -->
+    <section class="dark-features">
+      <div class="dark-features-inner">
+        <div class="dark-features-header reveal">
+          <h2 class="dark-features-h2">We don&rsquo;t just advise. We build.</h2>
+          <p class="dark-features-sub">Every system is designed, built, and handed over &mdash; no retainers, no lock-in.</p>
+        </div>
+
+        <div class="dark-features-grid">
+          <div class="dark-feature-card reveal">
+            <div class="dark-card-num">01</div>
+            <div class="dark-card-title">Custom-Built Systems</div>
+            <div class="dark-card-body">No templates. No recycled stacks. Every system is architected around your specific business.</div>
+          </div>
+          <div class="dark-feature-card reveal reveal-delay-1">
+            <div class="dark-card-num">02</div>
+            <div class="dark-card-title">&lt; 14 Day Delivery</div>
+            <div class="dark-card-body">From discovery to deployment in days. Speed without sacrificing quality.</div>
+          </div>
+          <div class="dark-feature-card reveal reveal-delay-2">
+            <div class="dark-card-num">03</div>
+            <div class="dark-card-title">AI-First by Design</div>
+            <div class="dark-card-body">AI isn&rsquo;t bolted on. It&rsquo;s the foundation every workflow is built upon.</div>
+          </div>
+          <div class="dark-feature-card reveal reveal-delay-3">
+            <div class="dark-card-num">04</div>
+            <div class="dark-card-title">Full Ownership</div>
+            <div class="dark-card-body">Code, documentation, and workflows &mdash; all yours. No vendor dependency.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY SOFTLOCK -->
+    <section class="why" id="why">
+      <div class="why-inner">
+        <div class="why-left reveal">
+          <h2 class="why-h2">Built for founders who need results.</h2>
+          <p class="why-text">We&rsquo;ve worked with founders across industries who needed more than an agency. They needed a technical co-pilot &mdash; someone who could build fast, think strategically, and hand over systems they actually owned.</p>
+        </div>
+
+        <div class="why-right">
+          <div class="feature-row reveal">
+            <div class="feature-check">&#10003;</div>
+            <div class="feature-text">
+              <div class="feature-title">Custom-Built, Not Templated</div>
+              <div class="feature-desc">No recycled stacks, no cookie-cutter solutions.</div>
+            </div>
+          </div>
+
+          <div class="feature-row reveal reveal-delay-1">
+            <div class="feature-check">&#10003;</div>
+            <div class="feature-text">
+              <div class="feature-title">Delivered in Weeks, Not Months</div>
+              <div class="feature-desc">Fast execution without cutting corners.</div>
+            </div>
+          </div>
+
+          <div class="feature-row reveal reveal-delay-2">
+            <div class="feature-check">&#10003;</div>
+            <div class="feature-text">
+              <div class="feature-title">AI-First Architecture</div>
+              <div class="feature-desc">Built on AI from the ground up, not bolted on.</div>
+            </div>
+          </div>
+
+          <div class="feature-row reveal reveal-delay-3">
+            <div class="feature-check">&#10003;</div>
+            <div class="feature-text">
+              <div class="feature-title">Full Code Ownership</div>
+              <div class="feature-desc">Everything handed over. No lock-in, ever.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="process" id="process">
+      <div class="process-inner">
+        <div class="process-header">
+          <span class="section-badge reveal">How It Works</span>
+          <h2 class="section-h2 reveal reveal-delay-1">A Process You Can Trust</h2>
+        </div>
+
+        <div class="process-steps">
+          <div class="process-connector" aria-hidden="true"></div>
+
+          <div class="process-step reveal">
+            <div class="step-number">1</div>
+            <div class="step-title">Discovery Call</div>
+            <div class="step-desc">Tell us what you&rsquo;re building and where you&rsquo;re stuck.</div>
+          </div>
+
+          <div class="process-step reveal reveal-delay-1">
+            <div class="step-number">2</div>
+            <div class="step-title">System Design</div>
+            <div class="step-desc">We blueprint your solution &mdash; tools, integrations, data flows.</div>
+          </div>
+
+          <div class="process-step reveal reveal-delay-2">
+            <div class="step-number">3</div>
+            <div class="step-title">Rapid Build</div>
+            <div class="step-desc">Delivered in 1&ndash;3 weeks with daily updates.</div>
+          </div>
+
+          <div class="process-step reveal reveal-delay-3">
+            <div class="step-number">4</div>
+            <div class="step-title">Handover + Growth</div>
+            <div class="step-desc">Full documentation, training, and optional ongoing support.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta" id="contact">
+      <div class="final-cta-inner">
+        <h2 class="final-cta-h2 reveal">Your next growth system starts with one conversation.</h2>
+        <p class="final-cta-sub reveal reveal-delay-1">We&rsquo;ll audit your current setup, identify the bottlenecks, and give you a clear roadmap &mdash; no charge.</p>
+        <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="btn-cta-large reveal reveal-delay-2">Book a Free Discovery Call &rarr;</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-cols">
+
+        <div>
+          <span class="footer-logo-text">SoftLock</span>
+          <p class="footer-tagline">AI systems, precisely built for your business.</p>
+        </div>
+
+        <div>
+          <div class="footer-col-heading">Services</div>
+          <div class="footer-col-subheading">Lead Generation</div>
+          <ul class="footer-links">
+            <li><a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener">Landing Pages</a></li>
+            <li><a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener">Cold Email Systems</a></li>
+            <li><a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener">Content Systems</a></li>
+          </ul>
+          <div class="footer-col-subheading">Talent Acquisition</div>
+          <ul class="footer-links">
+            <li><a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener">Hiring Funnels</a></li>
+            <li><a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener">Resume Screening</a></li>
+          </ul>
+          <div class="footer-col-subheading">Client Success</div>
+          <ul class="footer-links">
+            <li><a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener">AI Nurture Systems</a></li>
+            <li><a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener">AI Onboarding Systems</a></li>
+          </ul>
+          <div class="footer-col-subheading">Sales Administration</div>
+          <ul class="footer-links">
+            <li><a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener">Custom Web Apps</a></li>
+            <li><a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener">Customised CRMs</a></li>
+            <li><a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener">Document Processing</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-heading">Contact</div>
+          <div class="footer-contact-item">Ready to build something?</div>
+          <div class="footer-contact-item">
+            <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="footer-contact-link">Book a Free Discovery Call &rarr;</a>
+          </div>
+          <div class="footer-contact-item" style="margin-top: 16px;">
+            <a href="mailto:hello@softlock.io" class="footer-contact-link">hello@softlock.io</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        &copy; 2025 SoftLock. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── NAV SHADOW ON SCROLL ──
+    (function () {
+      var nav = document.getElementById('mainNav');
+      function handleScroll() {
+        if (window.scrollY > 20) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+      }
+      window.addEventListener('scroll', handleScroll, { passive: true });
+    })();
+
+    // ── MOBILE NAV TOGGLE ──
+    (function () {
+      var hamburger = document.getElementById('hamburger');
+      var mobileNav = document.getElementById('mobileNav');
+      var mobileNavClose = document.getElementById('mobileNavClose');
+      var mobileLinks = document.querySelectorAll('.mobile-nav-link, .btn-mobile-nav');
+
+      function openNav() {
+        hamburger.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        mobileNav.classList.add('open');
+        mobileNav.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeNav() {
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileNav.classList.remove('open');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      hamburger.addEventListener('click', function () {
+        if (mobileNav.classList.contains('open')) {
+          closeNav();
+        } else {
+          openNav();
+        }
+      });
+
+      mobileNavClose.addEventListener('click', closeNav);
+
+      mobileLinks.forEach(function (link) {
+        link.addEventListener('click', closeNav);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+          closeNav();
+        }
+      });
+    })();
+
+    // ── SCROLL REVEAL ──
+    (function () {
+      var elements = document.querySelectorAll('.reveal');
+
+      if (!elements.length) return;
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      elements.forEach(function (el) {
+        observer.observe(el);
+      });
+    })();
+  </script>
+
+</body>
+</html>
