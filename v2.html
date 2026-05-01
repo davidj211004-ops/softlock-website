@@ -248,7 +248,7 @@
 
     .hero-h1 {
       font-size: 72px;
-      font-weight: 800;
+      font-weight: 700;
       color: #0a0a0a;
       line-height: 1.05;
       letter-spacing: -0.025em;
@@ -500,6 +500,8 @@
     .ticker-outer {
       overflow: hidden;
       width: 100%;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
     }
 
     .ticker-inner {
@@ -578,7 +580,7 @@
 
     .section-h2 {
       font-size: 44px;
-      font-weight: 700;
+      font-weight: 600;
       color: #0a0a0a;
       letter-spacing: -0.018em;
       line-height: 1.12;
@@ -702,7 +704,7 @@
 
     .dark-features-h2 {
       font-size: 52px;
-      font-weight: 800;
+      font-weight: 700;
       color: #ffffff;
       letter-spacing: -0.025em;
       line-height: 1.1;
@@ -778,7 +780,7 @@
 
     .why-h2 {
       font-size: 42px;
-      font-weight: 700;
+      font-weight: 600;
       color: #0a0a0a;
       letter-spacing: -0.018em;
       line-height: 1.12;
@@ -837,7 +839,7 @@
 
     /* ── PROCESS ── */
     .process {
-      background: #fafafa;
+      background: #f0f0f0;
       padding: 96px 24px;
     }
 
@@ -854,63 +856,37 @@
     .process-steps {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      position: relative;
-    }
-
-    .process-connector {
-      position: absolute;
-      top: 20px;
-      left: calc(12.5% + 20px);
-      right: calc(12.5% + 20px);
-      height: 1px;
-      background: #e5e5e5;
-      z-index: 0;
+      gap: 16px;
     }
 
     .process-step {
       background: #ffffff;
-      border: 1px solid #e8e8e8;
-      border-radius: 14px;
-      padding: 28px 24px;
+      border-radius: 16px;
+      padding: 32px 28px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      position: relative;
-      z-index: 1;
-      margin: 0 8px;
-      transition: box-shadow 0.25s, transform 0.2s;
+      gap: 12px;
     }
 
-    .process-step:hover {
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-      transform: translateY(-2px);
-    }
-
-    .step-number {
-      width: 40px;
-      height: 40px;
-      background: #111111;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
-      font-weight: 700;
-      color: #ffffff;
-      flex-shrink: 0;
+    .step-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: #aaaaaa;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
     }
 
     .step-title {
-      font-size: 16px;
-      font-weight: 700;
+      font-size: 20px;
+      font-weight: 600;
       color: #0a0a0a;
+      line-height: 1.2;
     }
 
     .step-desc {
-      font-size: 14px;
-      color: #666666;
-      line-height: 1.6;
+      font-size: 15px;
+      color: #555555;
+      line-height: 1.7;
     }
 
     /* ── FINAL CTA ── */
@@ -931,7 +907,7 @@
 
     .final-cta-h2 {
       font-size: 52px;
-      font-weight: 800;
+      font-weight: 700;
       color: #ffffff;
       letter-spacing: -0.025em;
       line-height: 1.1;
@@ -984,7 +960,7 @@
 
     .footer-logo-text {
       font-size: 20px;
-      font-weight: 800;
+      font-weight: 600;
       color: #ffffff;
       letter-spacing: -0.02em;
       display: block;
@@ -1267,7 +1243,7 @@
         <div class="hero-left">
           <span class="hero-eyebrow reveal">AI Growth Partner for B2B Founders</span>
           <h1 class="hero-h1 reveal reveal-delay-1">The AI growth partner for fast-moving B2B companies.</h1>
-          <p class="hero-sub reveal reveal-delay-2">We built our agency on these systems before we sold them to anyone. Every tool, funnel, and workflow we deploy for clients is already running inside Softlock &mdash; tested, refined, and proven.</p>
+          <p class="hero-sub reveal reveal-delay-2">We don&rsquo;t just build AI systems &mdash; we use them. The same thinking that runs our agency is what we bring to yours.</p>
           <div class="hero-cta-row reveal reveal-delay-3">
             <a href="#services" class="btn-text-link">See what we build &darr;</a>
           </div>
@@ -1456,6 +1432,12 @@
                 <div class="service-desc">Automated document intake, extraction, and routing &mdash; turning manual admin into zero-touch workflows.</div>
                 <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
               </div>
+              <div class="service-card reveal reveal-delay-3">
+                <div class="service-icon">&#127908;</div>
+                <div class="service-name">AI Voice Systems</div>
+                <div class="service-desc">Intelligent voice agents that handle inbound calls, qualify leads, and book appointments &mdash; without a human on the line.</div>
+                <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="service-link">Learn more &rarr;</a>
+              </div>
             </div>
           </div>
 
@@ -1467,30 +1449,30 @@
     <section class="dark-features">
       <div class="dark-features-inner">
         <div class="dark-features-header reveal">
-          <h2 class="dark-features-h2">We run our agency on the same systems we build for you.</h2>
-          <p class="dark-features-sub">Before it reaches your business, it&rsquo;s already been tested in ours.</p>
+          <h2 class="dark-features-h2">We build what we believe in.</h2>
+          <p class="dark-features-sub">The systems we offer are ones we&rsquo;ve used, refined, and seen work &mdash; not ideas we&rsquo;re pitching for the first time.</p>
         </div>
 
         <div class="dark-features-grid">
           <div class="dark-feature-card reveal">
             <div class="dark-card-num">01</div>
             <div class="dark-card-title">Our Cold Email System</div>
-            <div class="dark-card-body">We book our own clients with this exact system &mdash; 3,000+ personalised emails sent per month, generating consistent qualified conversations.</div>
+            <div class="dark-card-body">Cold outreach that&rsquo;s personalised at scale &mdash; the kind of system we&rsquo;ve used to generate consistent inbound without a sales team.</div>
           </div>
           <div class="dark-feature-card reveal reveal-delay-1">
             <div class="dark-card-num">02</div>
             <div class="dark-card-title">Our Hiring Funnel</div>
-            <div class="dark-card-body">We screen every hire through our own AI funnel. What used to take two weeks now takes 48 hours &mdash; with better candidates at the end of it.</div>
+            <div class="dark-card-body">Recruiting without the overhead. An automated pipeline that filters, scores, and surfaces the right candidates &mdash; fast.</div>
           </div>
           <div class="dark-feature-card reveal reveal-delay-2">
             <div class="dark-card-num">03</div>
             <div class="dark-card-title">Our AI Nurture System</div>
-            <div class="dark-card-body">Zero manual follow-up. Every lead in our pipeline is touched automatically until they&rsquo;re ready to buy &mdash; 94% of clients convert within 3 touchpoints.</div>
+            <div class="dark-card-body">Leads that don&rsquo;t convert immediately aren&rsquo;t lost &mdash; they&rsquo;re nurtured automatically until the timing is right.</div>
           </div>
           <div class="dark-feature-card reveal reveal-delay-3">
             <div class="dark-card-num">04</div>
             <div class="dark-card-title">Our Content Engine</div>
-            <div class="dark-card-body">We publish consistently across every channel without a content team. One input, multiple outputs, every single week &mdash; on autopilot.</div>
+            <div class="dark-card-body">Consistent publishing without a content team. One input gets repurposed across every channel &mdash; automatically.</div>
           </div>
         </div>
       </div>
@@ -1500,8 +1482,8 @@
     <section class="why" id="why">
       <div class="why-inner">
         <div class="why-left reveal">
-          <h2 class="why-h2">We&rsquo;re operators first. Builders second.</h2>
-          <p class="why-text">We didn&rsquo;t build Softlock to give advice. We built it because we needed these systems ourselves. Every workflow we deploy for clients was born from a real problem we faced running our own agency &mdash; and solved before we ever sold it.</p>
+          <h2 class="why-h2">We understand the problems because we&rsquo;ve lived them.</h2>
+          <p class="why-text">Softlock was built by people who run a business, not just people who build software. We know what it&rsquo;s like to juggle hiring, outreach, client delivery, and growth all at once &mdash; and we build systems that actually address that reality.</p>
         </div>
 
         <div class="why-right">
@@ -1544,35 +1526,32 @@
     <section class="process" id="process">
       <div class="process-inner">
         <div class="process-header">
-          <span class="section-badge reveal">How It Works</span>
-          <h2 class="section-h2 reveal reveal-delay-1">A Process You Can Trust</h2>
+          <h2 class="section-h2 reveal">From first call to launch.</h2>
         </div>
 
         <div class="process-steps">
-          <div class="process-connector" aria-hidden="true"></div>
-
           <div class="process-step reveal">
-            <div class="step-number">1</div>
-            <div class="step-title">Discovery Call</div>
-            <div class="step-desc">Tell us what you&rsquo;re building and where you&rsquo;re stuck.</div>
+            <div class="step-label">Step 01</div>
+            <div class="step-title">Funnel map audit</div>
+            <div class="step-desc">A free 30-minute session where we map your current setup, identify the bottlenecks, and show you exactly where AI can move the needle.</div>
           </div>
 
           <div class="process-step reveal reveal-delay-1">
-            <div class="step-number">2</div>
-            <div class="step-title">System Design</div>
-            <div class="step-desc">We blueprint your solution &mdash; tools, integrations, data flows.</div>
+            <div class="step-label">Step 02</div>
+            <div class="step-title">Proposal</div>
+            <div class="step-desc">We deliver a clear scope, timeline, and fixed price. No surprises, no hourly billing. You know exactly what you&rsquo;re getting before we start.</div>
           </div>
 
           <div class="process-step reveal reveal-delay-2">
-            <div class="step-number">3</div>
-            <div class="step-title">Rapid Build</div>
-            <div class="step-desc">Delivered in 1&ndash;3 weeks with daily updates.</div>
+            <div class="step-label">Step 03</div>
+            <div class="step-title">Project</div>
+            <div class="step-desc">We build, test, and deploy your systems. You get regular updates and a working product &mdash; not a deck full of promises.</div>
           </div>
 
           <div class="process-step reveal reveal-delay-3">
-            <div class="step-number">4</div>
-            <div class="step-title">Handover + Growth</div>
-            <div class="step-desc">Full documentation, training, and optional ongoing support.</div>
+            <div class="step-label">Step 04</div>
+            <div class="step-title">Ongoing management</div>
+            <div class="step-desc">Optional retainer for monitoring, optimisation, and iteration. The longer the systems run, the better they get.</div>
           </div>
         </div>
       </div>
@@ -1581,8 +1560,8 @@
     <!-- FINAL CTA -->
     <section class="final-cta" id="contact">
       <div class="final-cta-inner">
-        <h2 class="final-cta-h2 reveal">See exactly what we&rsquo;ve built &mdash; and what we&rsquo;d build for you.</h2>
-        <p class="final-cta-sub reveal reveal-delay-1">Book a free 30-minute Discovery Call. We&rsquo;ll walk you through the systems running our agency and map out what your business needs.</p>
+        <h2 class="final-cta-h2 reveal">Let&rsquo;s figure out what your business actually needs.</h2>
+        <p class="final-cta-sub reveal reveal-delay-1">Book a free 30-minute Discovery Call. No pitch, no pressure &mdash; just a clear look at where AI can move the needle for you.</p>
         <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="btn-cta-large reveal reveal-delay-2">Book a Free Discovery Call &rarr;</a>
       </div>
     </section>
@@ -1622,6 +1601,7 @@
             <li><a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener">Custom Web Apps</a></li>
             <li><a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener">Customised CRMs</a></li>
             <li><a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener">Document Processing</a></li>
+            <li><a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener">AI Voice Systems</a></li>
           </ul>
         </div>
 
@@ -1632,7 +1612,10 @@
             <a href="https://calendly.com/softlock/discovery-call" target="_blank" rel="noopener" class="footer-contact-link">Book a Free Discovery Call &rarr;</a>
           </div>
           <div class="footer-contact-item" style="margin-top: 16px;">
-            <a href="mailto:hello@softlock.io" class="footer-contact-link">hello@softlock.io</a>
+            <a href="mailto:david@softlock.ai" class="footer-contact-link">david@softlock.ai</a>
+          </div>
+          <div class="footer-contact-item">
+            <a href="tel:+4915150974335" class="footer-contact-link">+49 151 5097 4335</a>
           </div>
         </div>
 
